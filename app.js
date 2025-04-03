@@ -15,7 +15,7 @@ app.get('/users', async (req, res) => {
     const [result] = await connection.execute(
         'SELECT * FROM users'
     );
-    res.json(result);
+    res.status(200).json(result);
 });
 
 module.exports = app;
