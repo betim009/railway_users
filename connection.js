@@ -6,6 +6,7 @@ const connection = mysql.createPool({
     user: process.env.USER, // Seu usuário do MySQL
     password: process.env.PASSWORD, // Sua senha do MySQL
     database: process.env.DATABASE, // Nome do banco de dados criado anteriormente
+    port: process.env.PORT_MYSQL, // Adicione a porta do MySQL
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
