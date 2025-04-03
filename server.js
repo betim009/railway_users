@@ -1,13 +1,14 @@
-require('dotenv').config();
-const express = require('express');
+const app = require('./app');
+const connection = require('./connection');
 
-const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-    res.send('Servidor Node.js rodando no Railway!');
-});
+app.listen(PORT, async () => {
+    console.log(`A conexão está sendo executada na porta ${PORT}`);
 
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
+    // O código abaixo é para testarmos a comunicação com o MySQL
+    const [result] = await connection.execute('SELECT 1');
+    if (result) {
+        console.log('Conexão ao BD feita com sucesso!');
+    }
 });
